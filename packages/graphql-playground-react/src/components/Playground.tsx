@@ -4,7 +4,7 @@ import TabBar from './Playground/TabBar'
 import { ISettings } from '../types'
 import HistoryPopup from './HistoryPopup'
 import { styled } from '../styled'
-import Settings from './Settings'
+// import Settings from './Settings'
 import { PlaygroundSettingsEditor, GraphQLConfigEditor } from './SettingsEditor'
 import { GraphQLConfig } from '../graphqlConfig'
 import FileEditor from './FileEditor'
@@ -327,13 +327,13 @@ export class Playground extends React.PureComponent<Props & ReduxProps, State> {
             ) : (
               <GraphQLEditor
                 shareEnabled={this.props.shareEnabled}
-                fixedEndpoint={this.props.fixedEndpoint}
+                fixedEndpoint
                 schema={this.state.schema}
               />
             )}
           </GraphiqlWrapper>
         </GraphiqlsContainer>
-        <Settings />
+        {/* <Settings /> */}
         {this.props.historyOpen && this.renderHistoryPopup()}
       </PlaygroundContainer>
     )
@@ -450,24 +450,29 @@ const PlaygroundContainer = styled.div`
   margin-right: -1px !important;
 
   line-height: 1.5;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0.53px;
   color: rgba(0, 0, 0, 0.8);
-
-  a:active,
+  a:active, 
   a:focus,
   button:focus,
   input:focus {
     outline: none;
   }
+  background-color: #f2f2f2;
+
 `
 
 const GraphiqlsContainer = styled.div`
-  height: calc(100vh - 57px);
+  height: 100vh;
   position: relative;
   overflow: hidden;
+  background-color: #f2f2f2;
+  
+  
+  
 `
 
 const GraphiqlWrapper = styled.div`

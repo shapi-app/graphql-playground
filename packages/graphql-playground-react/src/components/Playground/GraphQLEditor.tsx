@@ -69,6 +69,9 @@ import { ResponseRecord } from '../../state/sessions/reducers'
 import { getDocsOpen } from '../../state/docs/selectors'
 import { changeWidthDocs } from '../../state/docs/actions'
 
+// @ts-ignore
+import logo from '../../assets/shapi-logo-full.svg';
+
 /**
  * The top-level React component for GraphQLEditor, intended to encompass the entire
  * browser viewport.
@@ -171,18 +174,23 @@ class GraphQLEditor extends React.PureComponent<Props & ReduxProps> {
   }
 
   render() {
+    console.log('rendering gql editor');
     return (
       <Container ref={this.setContainerComponent}>
         <EditorWrapper>
-          <TopBar
-            shareEnabled={this.props.shareEnabled}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'  }}>
+            <img src={logo} alt="" style={{ height: '30px', marginRight: 'auto', marginLeft: '40px'  }} />
+            <TopBar
+              shareEnabled={this.props.shareEnabled}
+            />
+          </div>
           <EditorBar
             ref={this.setEditorBarComponent}
             onMouseDown={this.handleResizeStart}
           >
             <QueryWrap flex={this.props.editorFlex}>
               <QueryEditor
+                defaultValue="#hello my name is kaushik from outer component"
                 getRef={this.setQueryEditorComponent}
                 schema={this.props.schema}
                 onHintInformationRender={this.handleHintInformationRender}
@@ -762,7 +770,6 @@ const QueryWrap = styled<QueryProps, 'div'>('div')`
   display: flex;
   flex-direction: column;
   flex: ${props => props.flex} 1 0%;
-  border-top: 8px solid ${props => props.theme.editorColours.resultBackground};
 `
 
 const Intro = styled.div`
@@ -773,7 +780,7 @@ const Intro = styled.div`
   transform: translate(-50%, -50%);
   color: ${p => p.theme.colours.textInactive};
   font-size: ${p => p.theme.sizes.small16};
-  font-family: 'Source Code Pro', 'Consolas', 'Inconsolata', 'Droid Sans Mono',
+  font-family: 'Nunito', 'Source Code Pro', 'Consolas', 'Inconsolata', 'Droid Sans Mono',
     'Monaco', monospace;
   text-align: center;
   letter-spacing: 0.6px;

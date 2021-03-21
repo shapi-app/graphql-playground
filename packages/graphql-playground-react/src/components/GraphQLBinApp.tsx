@@ -53,9 +53,21 @@ class GraphQLBinApp extends React.Component<Props & ReduxProps, State> {
     }
   }
 
+  componentDidMount() {
+    const endpointUrl = getParameterByName('endpoint');
+
+    // Always give priority to the endpoint present in the query params.
+    if (endpointUrl && this.state.endpoint !== endpointUrl) 
+    this.setState({
+      endpoint: endpointUrl
+    })
+  }
+
+
   UNSAFE_componentWillMount() {
     if (this.props.match.params.id) {
       if (this.props.match.params.id === 'new') {
+        console.log('new one ');
         return
       }
       this.setState({ loading: true })
@@ -101,6 +113,7 @@ class GraphQLBinApp extends React.Component<Props & ReduxProps, State> {
             location.href = `${location.origin}/v2/new`
           }
           const state = JSON.parse(res.data.session.data)
+          console.log('state value ', state);
           this.props.injectState(state)
           this.setState({
             endpoint: res.data.session.endpoint,
@@ -115,6 +128,7 @@ class GraphQLBinApp extends React.Component<Props & ReduxProps, State> {
     // If no  endpoint passed tries to get one from url
     if (!endpoint) {
       endpoint = getParameterByName('endpoint')
+      console.log('endpoint ', endpoint);
     }
     if (!subscriptionEndpoint) {
       subscriptionEndpoint = getParameterByName('subscription')
@@ -132,6 +146,8 @@ class GraphQLBinApp extends React.Component<Props & ReduxProps, State> {
           </ThemeProvider>
         ) : (
           <PlaygroundWrapper
+          fixedEndpoints={true}
+          fixedEndpoint={true}
             endpoint={endpoint}
             headers={this.state.headers}
             subscriptionEndpoint={subscriptionEndpoint}

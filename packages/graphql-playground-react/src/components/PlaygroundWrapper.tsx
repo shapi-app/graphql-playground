@@ -393,8 +393,8 @@ class PlaygroundWrapper extends React.Component<
               onChangeConfig={this.handleChangeConfig}
               onSaveConfig={this.handleSaveConfig}
               onUpdateSessionCount={this.handleUpdateSessionCount}
-              fixedEndpoints={Boolean(this.state.configString)}
-              fixedEndpoint={this.props.fixedEndpoint}
+              fixedEndpoints
+              fixedEndpoint
               headers={combinedHeaders}
               configPath={this.props.configPath}
               workspaceName={

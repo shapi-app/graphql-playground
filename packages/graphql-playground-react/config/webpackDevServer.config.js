@@ -10,6 +10,12 @@ const host = process.env.HOST || '0.0.0.0';
 
 module.exports = function(proxy, allowedHost) {
   return {
+     // Use 'ws' instead of 'sockjs-node' on server since we're using native
+      // websockets in `webpackHotDevClient`.
+      transportMode: 'ws',
+      // Prevent a WS client from getting injected as we're already including
+      // `webpackHotDevClient`.
+      injectClient: false,
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
     // https://github.com/webpack/webpack-dev-server/issues/887

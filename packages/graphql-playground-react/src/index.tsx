@@ -12,6 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 /* tslint:disable-next-line */
 ;(window as any)['GraphQLPlayground'] = {
   init(element: HTMLElement, options) {
+    console.log('options ', element, options);
     ReactDOM.render(<Root {...options} />, element)
   },
 }

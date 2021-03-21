@@ -99,14 +99,19 @@ export default connect(
 )(TabBar)
 
 const StyledTabBar = styled.div`
+display: none;
   color: white;
   height: 57px;
-  background: ${p => p.theme.editorColours.background};
+  // background: ${p => p.theme.editorColours.background};
+  background-color: #f2f2f2;
+  border: 1px solid black;
   overflow: hidden;
   -webkit-app-region: drag;
   &:hover {
     overflow-x: overlay;
   }
+  padding: 0 16px;
+  width: 500px;
 `
 
 const SortableTabBar = SortableContainer(StyledTabBar)
@@ -118,8 +123,6 @@ interface TabsProps {
 const Tabs = styled<TabsProps, 'div'>('div')`
   display: flex;
   align-items: center;
-  margin-top: 16px;
-  padding-left: ${p => (p.isApp ? '43px' : '0')};
 `
 
 interface PlusProps {

@@ -106,7 +106,7 @@ const Title = styled.div`
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase !important;
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Nunito', 'Open Sans', sans-serif !important;
   letter-spacing: 1px;
   user-select: none !important;
   padding: 16px;

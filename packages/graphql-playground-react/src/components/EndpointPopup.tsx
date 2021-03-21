@@ -6,7 +6,7 @@ import { Button } from './Button'
 import { styled, css } from '../styled'
 
 // @ts-ignore
-import imageSource from '../assets/logo.png'
+import imageSource from '../assets/shapi-logo.svg';
 
 export interface Props {
   onRequestClose: (endpoint: string) => void
@@ -59,18 +59,18 @@ export default class EndpointPopup extends React.Component<Props, State> {
   render() {
     const { valid } = this.state
     return (
-      <Popup onRequestClose={this.close} darkBg={true}>
+      <Popup onRequestClose={this.close} darkBg={false}>
         <Wrapper>
           <LogoWrapper>
             <Logo>
               <img src={imageSource} alt="" />
-              <Heading>GraphQL Playground</Heading>
+              <Heading>Shapi Playground</Heading>
             </Logo>
           </LogoWrapper>
           <Form action="" onSubmit={this.submit}>
             <Input
               type="text"
-              placeholder="Enter an endpoint url..."
+              placeholder="Enter enter pass phrase..."
               value={this.state.endpoint}
               onChange={this.onChangeEndpoint}
               valid={typeof valid === 'boolean' && valid}
@@ -107,6 +107,8 @@ export default class EndpointPopup extends React.Component<Props, State> {
 
 const Wrapper = styled.div`
   box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 `
 
 const Form = styled.form`
@@ -132,7 +134,7 @@ interface InputProps {
 
 // prettier-ignore
 const Input = styled<InputProps, 'input'>('input')`
-  background: ${p => p.theme.colours.white10};
+  background: ${p => p.theme.colours.black02};
   border-radius: ${p => p.theme.sizes.smallRadius};
   padding: ${p => `${p.theme.sizes.small16} ${p.theme.sizes.medium25}`};
   font-weight: ${p => p.theme.sizes.fontSemiBold};
@@ -146,6 +148,8 @@ const Input = styled<InputProps, 'input'>('input')`
 
   transition: 250ms color;
 
+  color: black;
+
   ${(p: any) =>
     p.valid ? css`
       color: ${k => k.theme.colours.green};
@@ -158,9 +162,10 @@ const Input = styled<InputProps, 'input'>('input')`
 `
 
 const Heading = styled.h1`
-  margin-left: 38px;
-  font-weight: 400;
-  color: ${p => p.theme.colours.white80};
+  margin-left: 16px;
+  font-weight: 600;
+  letter-spacing: 0.9;
+  color: ${p => p.theme.colours.black};
 `
 
 const LogoWrapper = styled.div`
@@ -176,7 +181,7 @@ const Logo = styled.div`
   margin-bottom: 60px;
 
   img {
-    width: 78px;
-    height: 78px;
+    width: 60px;
+    height: 60px;
   }
 `

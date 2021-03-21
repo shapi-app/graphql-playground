@@ -36,6 +36,7 @@ import { isIframe } from '../../utils'
  *
  */
 export interface Props {
+  defaultValue?: String | null
   schema?: GraphQLSchema | null
   onHintInformationRender?: (elem: any) => void
   onRunQuery?: () => void
@@ -104,7 +105,7 @@ export class QueryEditor extends React.PureComponent<Props & ReduxProps, {}> {
 
     this.editor = CodeMirror(this.node, {
       autofocus: !isIframe() ? true : false,
-      value: this.props.value || '',
+      value: this.props.value || this.props.defaultValue || '',
       lineNumbers: true,
       tabSize: this.props.tabWidth || 2,
       indentWithTabs: this.props.useTabs || false,
@@ -239,9 +240,10 @@ export class QueryEditor extends React.PureComponent<Props & ReduxProps, {}> {
   }
 
   render() {
+    console.log('this. editor ', this.editor, this.setRef);
     return (
       <EditorWrapper>
-        <Editor ref={this.setRef} />
+        <Editor value="hello my name is kaushik" ref={this.setRef} />
       </EditorWrapper>
     )
   }
@@ -284,6 +286,7 @@ export class QueryEditor extends React.PureComponent<Props & ReduxProps, {}> {
   private onEdit = () => {
     if (!this.ignoreChangeEvent && this.props.onChange) {
       this.cachedValue = this.editor.getValue()
+      console.log('chNage ', this.cachedValue);
       this.props.onChange(this.cachedValue)
     }
   }

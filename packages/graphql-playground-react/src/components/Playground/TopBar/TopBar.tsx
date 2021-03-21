@@ -62,7 +62,7 @@ class TopBar extends React.Component<Props, {}> {
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}
             onBlur={this.props.refetchSchema}
-            disabled={this.props.fixedEndpoint}
+            disabled
             active={!this.props.fixedEndpoint}
           />
           {endpointUnreachable ? (
@@ -88,7 +88,7 @@ class TopBar extends React.Component<Props, {}> {
             </div>
           )}
         </UrlBarWrapper>
-        <Button onClick={this.copyCurlToClipboard}>Copy CURL</Button>
+        {false && <Button onClick={this.copyCurlToClipboard}>Copy CURL</Button>}
         {this.props.shareEnabled && (
           <Share>
             <Button>Share Playground</Button>
@@ -177,8 +177,9 @@ export default connect(
 export const Button = styled.button`
   text-transform: uppercase;
   font-weight: 600;
-  color: ${p => p.theme.editorColours.buttonText};
-  background: ${p => p.theme.editorColours.button};
+  color: white;
+  background: #7E6FC8
+  box-shadow: 4px;
   border-radius: 2px;
   flex: 0 0 auto;
   letter-spacing: 0.53px;
@@ -198,9 +199,11 @@ export const Button = styled.button`
 
 const TopBarWrapper = styled.div`
   display: flex;
-  background: ${p => p.theme.editorColours.navigationBar};
-  padding: 10px 10px 4px;
+  background-color: #f2f2f2;
+  padding: 10px 10px 16px 4px;
   align-items: center;
+  margin-left: auto;
+  margin-right: 30px;
 `
 
 interface UrlBarProps {
@@ -210,23 +213,27 @@ interface UrlBarProps {
 const UrlBar = styled<UrlBarProps, 'input'>('input')`
   background: ${p => p.theme.editorColours.button};
   border-radius: 4px;
-  color: ${p =>
-    p.active
-      ? p.theme.editorColours.navigationBarText
-      : p.theme.editorColours.textInactive};
   border: 1px solid ${p => p.theme.editorColours.background};
   padding: 6px 12px;
   padding-left: 30px;
   font-size: 13px;
   flex: 1;
+  user-select: none;
+  ms-user-select: none;
+  font-weight: 600;
+  color: black;
+  background: #F8FEFF
 `
 
 const UrlBarWrapper = styled.div`
-  flex: 1;
   margin-left: 6px;
   position: relative;
   display: flex;
   align-items: center;
+  width: 400px;
+  background-color: #f2f2f2;
+ 
+  border: 1px solid #fff44;
 `
 
 const ReachError = styled.div`

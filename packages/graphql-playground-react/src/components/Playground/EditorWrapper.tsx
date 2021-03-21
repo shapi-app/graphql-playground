@@ -15,10 +15,14 @@ const EditorWrapper = styled.div`
   /* Proppery */
   .cm-property {
     color: ${p => p.theme.editorColours.property};
+    font-weight: 600;
+    font-size: 16px;
   }
 
   /* Keyword */
   .cm-keyword {
+    font-weight: 600;
+    font-size: 16px;
     color: ${p => p.theme.editorColours.keyword};
   }
 
@@ -168,8 +172,8 @@ const EditorWrapper = styled.div`
     background: #08f;
     background: linear-gradient(#43a8ff, #0f83e8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-    color: white;
-    font-family: arial;
+    color: black;
+    font-family: 'Nunito', arial;
     font-size: 12px;
     line-height: 0;
     margin: 0 3px;
@@ -271,7 +275,7 @@ const EditorWrapper = styled.div`
     background: ${p => p.theme.editorColours.editorBackground};
   }
   .CodeMirror-linenumber {
-    font-family: Open Sans, sans-serif;
+    font-family: 'Nunito', Open Sans, sans-serif;
     font-weight: 600;
     font-size: ${p => `${p.theme.settings['editor.fontSize'] - 2}px`};
     color: ${p => p.theme.colours.textInactive};
@@ -447,7 +451,7 @@ const EditorWrapper = styled.div`
     border-radius: 0;
     border-width: 0;
     color: inherit;
-    font-family: inherit;
+    font-family: 'Nunito', inherit;
     font-size: inherit;
     -webkit-font-variant-ligatures: none;
     font-variant-ligatures: none;
@@ -606,7 +610,7 @@ const EditorWrapper = styled.div`
     background: transparent;
     border: 1px solid #d3d6db;
     color: inherit;
-    font-family: monospace;
+    font-family: 'Nunito', monospace;
     outline: none;
     width: 20em;
   }
@@ -675,7 +679,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 4px 4px 4px 4px;
     border: 1px solid black;
     color: #09141C;
-    font-family: Open Sans, monospace;
+    font-family:'Nunito', Open Sans, monospace;
     font-size: 14px;
     max-width: 600px;
     opacity: 0;
@@ -768,7 +772,7 @@ const GlobalStyle = createGlobalStyle`
   .CodeMirror-lint-message-error span {
     color: white;
     background: #FF4F56;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Nunito', 'Source Code Pro', monospace;
     font-weight: 600;
     border-radius: 2px;
     padding: 0 4px;
@@ -795,7 +799,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .CodeMirror-hints-wrapper {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Nunito', 'Open Sans', sans-serif;
     background: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
     margin-left: -6px;
@@ -894,7 +898,7 @@ const GraphqlContainer = styled.div`
   color: #141823;
   display: flex;
   flex-direction: row;
-  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular',
+  font-family: 'Nunito', system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular',
     'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande',
     arial, sans-serif;
   font-size: 14px;
@@ -902,6 +906,9 @@ const GraphqlContainer = styled.div`
   margin: 0;
   overflow: hidden;
   width: 100%;
+  background-color: #f2f2f2;
+  
+
 `
 
 export class Container extends React.PureComponent {

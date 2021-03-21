@@ -288,7 +288,7 @@ const Tabs = styled<TabsProps, 'div'>('div')`
   right: 0px;
   z-index: ${p => (p.open ? 2000 : 3)};
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   .doc-type-description p {
     padding: 16px;
@@ -304,7 +304,7 @@ const Tabs = styled<TabsProps, 'div'>('div')`
     color: #1f61a9;
   }
   code {
-    font-family: 'Source Code Pro', monospace;
+    font-family:'Nunito', 'Source Code Pro', monospace;
     border-radius: 2px;
     padding: 1px 2px;
     background: rgba(0, 0, 0, 0.06);
